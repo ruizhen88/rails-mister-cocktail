@@ -24,7 +24,7 @@
       <div class="card">
         <div class="card-description">
           <p>Add a new cocktail</p>
-          <%= simple_form_for(@cocktail) do |f| %>
+          <%= simple_form_for(@cocktail) input_html: { class: "recognitionStyling" } do |f| %>
             <%= f.input :name %>
             <%= f.button :submit %>
           <% end %>
