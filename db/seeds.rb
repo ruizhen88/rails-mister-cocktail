@@ -12,5 +12,5 @@ require 'json'
 data = JSON.parse(open('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list').read)
 array = data["drinks"]
 array.each do |ingredient|
-  Ingredient.create!(name: ingredient["strIngredient1"])
+  Ingredient.create(name: ingredient["strIngredient1"])
 end
