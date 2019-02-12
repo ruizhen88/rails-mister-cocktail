@@ -8,12 +8,12 @@
   <div class="row">
     <% @cocktails.each do |cocktail| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: url('http://www.allwhitebackground.com/images/5/Cocktail-Free-Picture.jpg')">
+        <div class="card" style="background-image: url('<%= cocktail.photo %>')">
           <div class="card-description">
             <h4><%= link_to cocktail.name, cocktail_path(cocktail) %></h4>
             <ul>
               <% cocktail.ingredients.each do |ingredient| %>
-                <li><%= ingredient.name %></li>
+                <li><%= ingredient.name (@ingredient.dose) %></li>
               <% end %>
             </ul>
           </div>
@@ -24,8 +24,10 @@
       <div class="card">
         <div class="card-description">
           <p>Add a new cocktail</p>
-          <%= simple_form_for(@cocktail) input_html: { class: "recognitionStyling" } do |f| %>
+          <%= simple_form_for(@cocktail) do |f| %>
             <%= f.input :name %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
             <%= f.button :submit %>
           <% end %>
         </div>
